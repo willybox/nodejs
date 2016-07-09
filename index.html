@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Yo</title>
+	</head>
+	<body>
+		<h1>Hello</h1>
+		<button id="hello">ici</button>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src ="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script>
+			var socket = io.connect('http://localhost:8080');
+			
+			$('#hello').click(function() {
+				socket.emit('message', 'Hello serveur!');
+			});
+			
+			socket.on('test', function(test) {
+				alert('Message du serveur : ' + test);
+			});
+		</script>
+	</body>
+</html>
